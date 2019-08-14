@@ -28,11 +28,11 @@ public class GameManager : MonoBehaviour
 
     public void Restart()
     {
-        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        if (uIManager != null)
-            uIManager.ClosePanel();
-        else
-            Debug.Log(uIManager);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        //if (uIManager != null)
+        //    uIManager.ClosePanel();
+        //else
+        //    Debug.Log(uIManager);
     }
 
     public void IncreaseSpeed(int index)

@@ -67,12 +67,13 @@ public class UIManager : MonoBehaviour
     public void Damage()
     {
         int currentLives = lives.Count;
-        if(currentLives<=0)
-        {
-            GM.ShowGameOverPanel();
-        }
         lives[currentLives-1].gameObject.SetActive(false);
         lives.RemoveAt(currentLives - 1);
+        if (lives.Count <= 0)
+        {
+            LosePanelPanel.SetActive(true);
+            Time.timeScale = 0;
+        }
     }
 
     public void Score()

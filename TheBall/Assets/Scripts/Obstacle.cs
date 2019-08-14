@@ -26,8 +26,8 @@ public class Obstacle : MonoBehaviour
         //    multIsChanged = false;
         //}
         transform.Translate(new Vector3(0, 0, -1)* speed/**Multiplier*/ * Time.deltaTime);
-        speed += 0.01f;
-        Debug.Log(speed);
+        //speed += 0.01f;
+        //Debug.Log(speed);
         if (transform.position.z<=maxDistance)
         {
             Destroy(gameObject);
