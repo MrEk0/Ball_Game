@@ -54,9 +54,9 @@ public class UIManager : MonoBehaviour
         if (startPanel != null)
         {
             Destroy(startPanel);
-            Debug.Log("destroy");
+            //Debug.Log("destroy");
         }
-        Debug.Log("Yeap");
+        //Debug.Log("Yeap");
     }
 
     public void LoseGame()
@@ -67,12 +67,17 @@ public class UIManager : MonoBehaviour
     public void Damage()
     {
         int currentLives = lives.Count;
+        if(currentLives<=0)
+        {
+            GM.ShowGameOverPanel();
+        }
         lives[currentLives-1].gameObject.SetActive(false);
+        lives.RemoveAt(currentLives - 1);
     }
 
     public void Score()
     {
-        currentScore += 1;
+        currentScore += 5;
         if(currentScore>=scoresToBoost[scoresIndex])
         {
             GM.IncreaseSpeed(scoresIndex);

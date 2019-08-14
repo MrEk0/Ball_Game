@@ -39,6 +39,12 @@ public class GameManager : MonoBehaviour
     {
         float multi= multiplier[index];
         obstacle.MultiplySpeed(multi);
+        //Debug.Log(multi);
+    }
+
+    public void ShowGameOverPanel()
+    {
+
     }
 
     //public void Play()
