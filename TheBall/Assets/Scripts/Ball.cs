@@ -4,15 +4,31 @@ using UnityEngine;
 
 public class Ball : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    UIManager uIManager;
+
+    private void Awake()
     {
-        
+        uIManager = FindObjectOfType<UIManager>();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnCollisionEnter(Collision collision)
     {
-        
+        if (collision.gameObject.CompareTag("Death"))
+        {
+            Debug.Log("Collide");
+            Destroy(collision.gameObject);
+            uIManager.Damage();
+        }
+        else if (collision.gameObject.CompareTag("Life"))
+        {
+            Debug.Log("Collide");
+            Destroy(collision.gameObject);
+            uIManager.Score();
+        }
+    }
+
+    private void TakeDamage()
+    {
+
     }
 }
