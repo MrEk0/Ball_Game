@@ -7,15 +7,19 @@ public class UIManager : MonoBehaviour
 {
     [SerializeField] GameObject StartMenuPanel;
     [SerializeField] GameObject LosePanelPanel;
+    [SerializeField] List<int> scoresToBoost;
 
     GameObject startPanel;
+    GameManager GM;
     List<Transform> lives;
     Text scorePoints;
+    int scoresIndex = 0;
 
     int currentScore=0;
 
     private void Awake()
     {
+        GM = FindObjectOfType<GameManager>();
         lives = new List<Transform>();
         GetLivesCount();
         scorePoints = GetComponentInChildren<Text>();
@@ -63,12 +67,17 @@ public class UIManager : MonoBehaviour
     public void Damage()
     {
         int currentLives = lives.Count;
-        lives[currentLives].gameObject.SetActive(false);
+        lives[currentLives-1].gameObject.SetActive(false);
     }
 
     public void Score()
     {
         currentScore += 1;
+        if(currentScore>=scoresToBoost[scoresIndex])
+        {
+            GM.IncreaseSpeed(scoresIndex);
+            scoresIndex += 1;
+        }
         scorePoints.text = currentScore.ToString();
     }
 }

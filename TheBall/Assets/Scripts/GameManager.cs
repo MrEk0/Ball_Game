@@ -5,11 +5,14 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    [SerializeField] List<float> multiplier;
     UIManager uIManager;
+    Obstacle obstacle;
 
     private void Awake()
     {
         //uIManager = FindObjectOfType<UIManager>();
+        obstacle = FindObjectOfType<Obstacle>();
     }
 
     private void Start()
@@ -30,6 +33,12 @@ public class GameManager : MonoBehaviour
             uIManager.ClosePanel();
         else
             Debug.Log(uIManager);
+    }
+
+    public void IncreaseSpeed(int index)
+    {
+        float multi= multiplier[index];
+        obstacle.MultiplySpeed(multi);
     }
 
     //public void Play()

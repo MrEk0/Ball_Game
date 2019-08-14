@@ -121,6 +121,7 @@ MonoBehaviour:
   StartMenuPanel: {fileID: 6930682751991001060, guid: 30a93c52db3931c4596ba23ffa878238,
     type: 3}
   LosePanelPanel: {fileID: 6851005663643036377}
+  scoresToBoost: 0a000000190000003200000064000000
 --- !u!1 &5113953607601114796
 GameObject:
   m_ObjectHideFlags: 0
@@ -229,7 +230,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 82.5, y: -27.549988}
+  m_AnchoredPosition: {x: 137.5, y: -27.549988}
   m_SizeDelta: {x: 55, y: 55}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5113953607711248553
@@ -461,7 +462,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 137.5, y: -27.5}
+  m_AnchoredPosition: {x: 82.5, y: -27.5}
   m_SizeDelta: {x: 55, y: 55}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5113953608987854596
@@ -512,6 +513,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: StartPanel
+      objectReference: {fileID: 0}
+    - target: {fileID: 6930682751991001060, guid: 30a93c52db3931c4596ba23ffa878238,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5320854453564804067, guid: 30a93c52db3931c4596ba23ffa878238,
         type: 3}
