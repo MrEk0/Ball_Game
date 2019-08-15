@@ -17,7 +17,6 @@ public class Obstacle : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        Debug.Log(Speed);
     }
 
 }
