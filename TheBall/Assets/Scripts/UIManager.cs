@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -6,16 +7,18 @@ using UnityEngine.UI;
 public class UIManager : MonoBehaviour
 {
     [SerializeField] GameObject StartMenuPanel;
-    [SerializeField] GameObject LosePanelPanel;
-    [SerializeField] List<int> scoresToBoost;
+    [SerializeField] GameObject LosePanel;
+    [SerializeField] GameSettings gameSettings;
 
     GameObject startPanel;
     GameManager GM;
     List<Transform> lives;
     Text scorePoints;
     int scoresIndex = 0;
-
+    int currentLives;
     int currentScore=0;
+
+    public event Action onScoreAchieved;
 
     private void Awake()
     {
@@ -23,7 +26,6 @@ public class UIManager : MonoBehaviour
         lives = new List<Transform>();
         GetLivesCount();
         scorePoints = GetComponentInChildren<Text>();
-        Debug.Log("dfd" + lives.Count);
     }
 
     private void GetLivesCount()
@@ -39,39 +41,18 @@ public class UIManager : MonoBehaviour
 
     private void Start()
     {
-        //startPanel = Instantiate(StartMenuPanel, transform);
-        //StartMenuPanel.SetActive(true);
-    }
-
-    //public List<Transform> GetLives()
-    //{
-    //    return lives;
-    //}
-
-    public void ClosePanel()
-    {
-        //StartMenuPanel.SetActive(false);
-        if (startPanel != null)
-        {
-            Destroy(startPanel);
-            //Debug.Log("destroy");
-        }
-        //Debug.Log("Yeap");
-    }
-
-    public void LoseGame()
-    {
-        Instantiate(LosePanelPanel, transform.position, transform.rotation);
+        startPanel=Instantiate(StartMenuPanel, transform);
+        Time.timeScale = 0;
     }
 
     public void Damage()
     {
-        int currentLives = lives.Count;
+        currentLives = lives.Count;
         lives[currentLives-1].gameObject.SetActive(false);
         lives.RemoveAt(currentLives - 1);
         if (lives.Count <= 0)
         {
-            LosePanelPanel.SetActive(true);
+            Instantiate(LosePanel, transform);
             Time.timeScale = 0;
         }
     }
@@ -79,11 +60,16 @@ public class UIManager : MonoBehaviour
     public void Score()
     {
         currentScore += 5;
-        if(currentScore>=scoresToBoost[scoresIndex])
+        if(currentScore>=gameSettings.GetScoreToBoost(scoresIndex))
         {
-            GM.IncreaseSpeed(scoresIndex);
+            onScoreAchieved();
             scoresIndex += 1;
         }
         scorePoints.text = currentScore.ToString();
+    }
+
+    public void StartGame()
+    {
+        Destroy(startPanel);
     }
 }

@@ -28,16 +28,13 @@ public class Ball : MonoBehaviour
 
     private void OnTriggerEnter(Collider collider)
     {
-        //Debug.Log(collider.gameObject.name);
         if (collider.gameObject.CompareTag("Death"))
         {
-            //Debug.Log("Collide");
             Destroy(collider.gameObject);
             uIManager.Damage();
         }
         else if (collider.gameObject.CompareTag("Life"))
         {
-            //Debug.Log("Collide");
             Destroy(collider.gameObject);
             uIManager.Score();
         }
@@ -49,10 +46,8 @@ public class Ball : MonoBehaviour
         RaycastHit hit;
         if(Physics.Raycast(ray, out hit))
         {
-            //Debug.Log(positionX);
             move = new Vector3(hit.point.x, transform.position.y, transform.position.z);
             move.x = Mathf.Clamp(move.x, leftBoundary, rightBoundary);
-            //Debug.Log(move);
         }
     }
 }

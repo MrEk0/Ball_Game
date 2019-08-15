@@ -331,9 +331,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5113953607439175257, guid: 52fe928ea424f8f44a690910f4d99168,
+      - m_Target: {fileID: 4761462463376264372, guid: d98e917106fbfb04abf1160fc20ea40f,
           type: 3}
-        m_MethodName: ClosePanel
+        m_MethodName: Play
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

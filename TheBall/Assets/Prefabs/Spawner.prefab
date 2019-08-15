@@ -46,6 +46,7 @@ MonoBehaviour:
   obstacles:
   - {fileID: 6487404316254239318, guid: 27fa83840474363458a9fbc6f061f28c, type: 3}
   - {fileID: 236764709527309117, guid: 488d46f2217fc504ebc443a3b9ae1c64, type: 3}
+  gameSettings: {fileID: 11400000, guid: 0d27f4de2273a22499c3021b5ee78e15, type: 2}
   timeBetweenSpawns: 2
-  minTimeSpawn: 4
+  minTimeSpawn: 1
   maxTimeSpawn: 8
